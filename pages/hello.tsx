@@ -1,12 +1,11 @@
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { Firebase } from "../libs/firebase";
 import { Errors } from "../libs/types";
 import { Validate } from "../libs/validate";
-import useWindowSize from "react-use/lib/useWindowSize";
 import Confetti from "react-confetti";
+import useWindowSize from "react-use/lib/useWindowSize";
 import router from "next/router";
 const Hello = () => {
-  // checked form data input
   const [checked, setChecked] = useState(false);
   const [computer, setComputer] = useState("");
   const [model, setModel] = useState("");
@@ -15,7 +14,7 @@ const Hello = () => {
   const [success, setSuccess] = useState("");
   const fire = new Firebase();
   const { width, height } = useWindowSize();
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       if (
