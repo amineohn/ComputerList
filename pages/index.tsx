@@ -132,7 +132,7 @@ const Login: NextPage = () => {
                   onClick={() => {
                     setError("");
                   }}
-                  className="flex-no-shrink bg-red-500 px-5 ml-4 py-2 text-sm shadow-sm hover:shadow-lg font-medium tracking-wider border-2 border-red-500 text-white rounded-full"
+                  className="flex-no-shrink px-5 ml-4 py-2 text-sm shadow-sm hover:shadow-lg font-medium tracking-wider border-2 bg-blue-50 text-blue-900 hover:bg-blue-100 rounded-full"
                 >
                   Delete
                 </button>
@@ -141,7 +141,11 @@ const Login: NextPage = () => {
           )}
           {success && (
             <>
-              <Confetti width={width} height={height} className="z-50" />
+              <Confetti
+                width={width}
+                height={height}
+                className="z-50 animate-conffeti"
+              />
 
               <div className="p-8 bg-pink-800 shadow-md hover:shodow-lg rounded-2xl max-w-md animate-heartbeat">
                 <div className="flex items-center justify-between">
@@ -164,16 +168,22 @@ const Login: NextPage = () => {
                       <div className="font-medium leading-none text-gray-100">
                         nice gg
                       </div>
-                      <p className="text-sm text-gray-500 leading-none mt-1">
+                      <p className="text-sm text-pink-200 leading-none mt-1">
                         {success}
                       </p>
+                      <a
+                        className="text-sm text-pink-500 font-bold leading-none mt-1 cursor-pointer"
+                        onClick={() => router.push("/list")}
+                      >
+                        List of computers
+                      </a>
                     </div>
                   </div>
                   <button
                     onClick={() => {
                       setSuccess(false);
                     }}
-                    className="flex-no-shrink bg-pink-500 px-5 ml-4 py-2 text-sm shadow-sm hover:shadow-lg font-medium tracking-wider border-2 border-pink-500 text-white rounded-full"
+                    className="flex-no-shrink  px-5 ml-4 py-2 text-sm shadow-sm hover:shadow-lg font-medium tracking-wider border-2 bg-pink-50 text-pink-700 hover:bg-pink-100 rounded-full"
                   >
                     Delete
                   </button>
@@ -218,9 +228,9 @@ const Login: NextPage = () => {
               <div className="flex items-center justify-between space-x-2">
                 <button
                   className={
-                    `py-2 px-5 flex justify-center items-center bg-blue-500 hover:bg-blue-700 focus:ring-blue-700 focus:ring-offset-blue-100 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg` +
+                    `py-2 px-5 flex justify-center items-center bg-pink-500 hover:bg-pink-700 focus:ring-pink-700 focus:ring-offset-pink-100 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg` +
                     (loading
-                      ? "py-2 px-4 flex justify-center items-center bg-blue-500 hover:bg-blue-700 focus:ring-blue-700 focus:ring-offset-blue-100 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg animate-pulse cursor-not-allowed"
+                      ? "py-2 px-4 flex justify-center items-center bg-pink-500 hover:bg-pink-700 focus:ring-pink-700 focus:ring-offset-pink-100 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg animate-pulse cursor-not-allowed"
                       : "")
                   }
                   type="submit"
@@ -228,7 +238,7 @@ const Login: NextPage = () => {
                 >
                   {loading ? (
                     <>
-                      <Loading message="Chargement" />
+                      <Loading message="Loading" />
                     </>
                   ) : (
                     "Sign in"

@@ -8,7 +8,7 @@ const list = () => {
   useEffect(() => {
     fire
       .collection("computer")
-      .orderBy("createdAt", "desc")
+      .orderBy("date", "desc")
       .onSnapshot((snapshot) => {
         const data = snapshot.docs.map((doc) => ({
           id: doc.id,
@@ -18,43 +18,51 @@ const list = () => {
       });
   }, []);
   return (
-    <div className="container mx-auto">
-      <div className="flex justify-center items-center">
-        <div className="space-y-2">
-          <div className="gap-2 grid grid-cols-1 lg:grid-cols-4">
-            {data.map((data: Post) => (
-              <div className="bg-neutral-800 w-72 shadow-lg rounded-xl p-4">
-                <p className="text-neutral-600 dark:text-white">
-                  <span className="font-bold text-blue-400 text-lg">“</span>
-                  <span className="text-neutral-50">
-                    {data.comment ? data.comment : "No comment"}
-                  </span>
-                  <span className="font-bold text-blue-400 text-lg">”</span>
-                </p>
-                <div className="flex items-center mt-4">
-                  <a href="#" className="block relative">
-                    <img
-                      alt="profil"
-                      src={
-                        data.userPhotoUrl
-                          ? data.userPhotoUrl
-                          : "/static/images/default.svg"
-                      }
-                      className="mx-auto object-cover rounded-full h-10 w-10 "
-                    />
-                  </a>
-                  <div className="flex flex-col ml-2 justify-between">
-                    <span className="font-semibold text-blue-400 text-sm">
-                      {data.userName ? data.userName : "Anonymous"}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            ))}
+    <>
+      <div
+        className={`flex items-center justify-center min-h-screen mx-10 lg:mx-10 animate-heartbeat ${
+          data ? `animate-heartbeat` : ``
+        }`}
+      >
+        <div className="col-span-12">
+          <div className="overflow-auto lg:overflow-visible ">
+            <table className="table text-gray-400 border-separate space-y-6 text-sm">
+              <thead className="bg-neutral-800 text-gray-500">
+                <tr>
+                  <th className="p-3">Computer</th>
+                  <th className="p-3 text-left">Serial Number</th>
+                  <th className="p-3 text-left">Model</th>
+                  <th className="p-3 text-left">Checked</th>
+                  <th className="p-3 text-left"></th>
+                </tr>
+              </thead>
+              <tbody className="h-28 overflow-auto">
+                {data.map((data: Post) => (
+                  <tr className="bg-neutral-800">
+                    <td className="p-3">
+                      <div className="flex align-items-center">
+                        <div className="ml-3">
+                          <div className="">{data.computer}</div>
+                          <div className="text-gray-500">{data.date}</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td className="p-3">{data.serial}</td>
+                    <td className="p-3 font-bold">{data.model}</td>
+                    <td className="p-3 text-center">
+                      <span className="text-center bg-green-100 text-green-500 rounded-md px-2">
+                        {data.checked ? "Yes" : "No"}
+                      </span>
+                    </td>
+                    <td className="p-3"></td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 export default list;

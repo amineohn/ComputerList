@@ -6,7 +6,6 @@ import dynamic from "next/dynamic";
 import { StatusBar, Style } from "@capacitor/status-bar";
 import { Capacitor } from "@capacitor/core";
 import { SplashScreen } from "@capacitor/splash-screen";
-import { useRouter } from "next/router";
 import { Firebase } from "../libs/firebase";
 import { NextSeo } from "next-seo";
 import { configuration } from "../utils/configuration";
@@ -36,13 +35,6 @@ export default function MyApp({
       SplashScreen.hide();
     }
   }
-  const router = useRouter();
-
-  useEffect(() => {
-    if (!fire.user()) {
-      router.push("/");
-    }
-  }, []);
   return (
     <>
       <NextSeo
@@ -68,6 +60,10 @@ export default function MyApp({
           <Navigation />
         </div>
       </ThemeProvider>
+      <link
+        href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+        rel="stylesheet"
+      />
       <script src="https://cdn.jsdelivr.net/npm/datalist-css/dist/datalist-css.min.js" />
     </>
   );

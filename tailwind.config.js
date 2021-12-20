@@ -30,6 +30,7 @@ module.exports = {
         scaleUp: "scaleUp 1s ease 0s 1 normal forwards",
         BounceIn: "BounceIn 1s ease 0s 1 normal forwards",
         scaleInCenter: "scaleInCenter 1s ease 0s 1 normal forwards;",
+        conffeti: "conffeti 1s ease 0s 1 normal forwards;",
       },
       keyframes: {
         fadeInOut: {
@@ -51,6 +52,11 @@ module.exports = {
           "0%": { transform: "scale(0.5)" },
           "100%": { transform: "scale(1)" },
         },
+        conffeti: {
+          "0%": { transform: "scale(0.5)" },
+          "100%": { transform: "scale(1)" },
+        },
+
         heartbeat: {
           "0%": {
             animationTimingFunction: "ease-out",
@@ -171,5 +177,5 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/forms")],
 };
