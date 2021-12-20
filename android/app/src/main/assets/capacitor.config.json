@@ -1,0 +1,28 @@
+{
+	"appId": "com.computerlist.app",
+	"appName": "name-app",
+	"webDir": "out",
+	"bundledWebRuntime": false,
+	"plugins": {
+		"PushNotifications": {
+			"presentationOptions": [
+				"badge",
+				"sound",
+				"alert"
+			]
+		},
+		"Keyboard": {
+			"resize": "body",
+			"style": "dark",
+			"resizeOnFullScreen": true
+		},
+		"SplashScreen": {
+			"launchShowDuration": 0,
+			"launchAutoHide": true,
+			"backgroundColor": "#ffffffff"
+		}
+	},
+	"server": {
+		"url": "https://next-tailwind-firebase-capacitor-9ja7hw8uz-amineprojet7.vercel.app"
+	}
+}
