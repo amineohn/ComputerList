@@ -204,7 +204,7 @@ const Login: NextPage = () => {
                 </label>
                 <input
                   onChange={setEmailChange}
-                  className="shadow appearance-none rounded-lg w-full py-2 px-3 bg-neutral-800 text-neutral-50 leading-tight focus:outline-none focus:shadow-outline"
+                  className="shadow appearance-none rounded-lg w-full py-2 px-3 border border-neutral-800 bg-neutral-800 text-neutral-50 leading-tight focus:outline-none focus:shadow-outline"
                   id="email"
                   type="email"
                   placeholder="Email"
@@ -219,7 +219,7 @@ const Login: NextPage = () => {
                 </label>
                 <input
                   onChange={setPasswordChange}
-                  className="shadow appearance-none rounded-lg w-full py-2 px-3 bg-neutral-800 text-neutral-50 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                  className="shadow appearance-none rounded-lg w-full py-2 px-3 border border-neutral-800 bg-neutral-800 text-neutral-50 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                   id="password"
                   type="password"
                   placeholder="***********"
@@ -228,9 +228,9 @@ const Login: NextPage = () => {
               <div className="flex items-center justify-between space-x-2">
                 <button
                   className={
-                    `py-2 px-5 flex justify-center items-center bg-pink-500 hover:bg-pink-700 focus:ring-pink-700 focus:ring-offset-pink-100 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg` +
+                    `mt-3 py-2 px-4 flex justify-center items-center text-sm font-semibold bg-pink-50 text-pink-700 hover:bg-pink-100 transition ease-in duration-200 text-center focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg` +
                     (loading
-                      ? "py-2 px-4 flex justify-center items-center bg-pink-500 hover:bg-pink-700 focus:ring-pink-700 focus:ring-offset-pink-100 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg animate-pulse cursor-not-allowed"
+                      ? "mt-3 py-2 px-4 flex justify-center items-center text-sm font-semibold bg-pink-50 text-pink-700 hover:bg-pink-100 transition ease-in duration-200 text-center focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg animate-pulse cursor-not-allowed"
                       : "")
                   }
                   type="submit"
