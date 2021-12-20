@@ -70,12 +70,19 @@ const Login: NextPage = () => {
 
   return (
     <>
-      <FadeIn className="lg:my-48 my-48 animate-scaleUp transition">
+      {error && (
+        <Confetti
+          width={width}
+          height={height}
+          className="z-50 animate-conffeti"
+        />
+      )}
+      <FadeIn className="my-60 h-screen animate-scaleUp transition">
         {redirection && (
           <div className="flex items-center justify-center z-50">
             <div className="flex justify-center m-auto space-x-2">
               <svg
-                className="flex justify-center animate-spin h-7 w-7 text-gray-800 mt-1"
+                className="flex justify-center animate-spin h-7 w-7 text-pink-400 mt-1"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -94,7 +101,7 @@ const Login: NextPage = () => {
                   d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                 />
               </svg>
-              <span className="flex text-center text-lg font-medium m-auto">
+              <span className="flex text-center text-lg font-medium m-auto text-neutral-50">
                 Redirection...
               </span>
             </div>
@@ -141,12 +148,6 @@ const Login: NextPage = () => {
           )}
           {success && (
             <>
-              <Confetti
-                width={width}
-                height={height}
-                className="z-50 animate-conffeti"
-              />
-
               <div className="p-8 bg-pink-800 shadow-md hover:shodow-lg rounded-2xl max-w-md animate-heartbeat">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center">
@@ -238,7 +239,10 @@ const Login: NextPage = () => {
                 >
                   {loading ? (
                     <>
-                      <Loading message="Loading" />
+                      <Loading
+                        message="Loading"
+                        className="animate-spin h-4 w-4 text-pink-400 mt-1"
+                      />
                     </>
                   ) : (
                     "Sign in"

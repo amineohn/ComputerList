@@ -1,8 +1,8 @@
-export default function Loading({ message }) {
+export default function Loading({ message, className }) {
   return (
     <div className="flex space-x-1">
       <svg
-        className="animate-spin h-4 w-4 text-gray-100 mt-1"
+        className={className}
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
