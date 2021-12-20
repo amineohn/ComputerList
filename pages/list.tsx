@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Firebase } from "../libs/firebase";
 import { Post } from "../libs/types";
 
-const list = () => {
+const List = () => {
   const fire = new Firebase();
   const [data, setData] = useState([{}] as any);
   useEffect(() => {
@@ -37,8 +37,8 @@ const list = () => {
                 </tr>
               </thead>
               <tbody className="h-28 overflow-auto">
-                {data.map((data: Post) => (
-                  <tr className="bg-neutral-800">
+                {data.map((data: Post, index) => (
+                  <tr className="bg-neutral-800" key={index}>
                     <td className="p-3">
                       <div className="flex align-items-center">
                         <div className="ml-3">
@@ -65,4 +65,4 @@ const list = () => {
     </>
   );
 };
-export default list;
+export default List;
