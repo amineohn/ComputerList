@@ -200,7 +200,7 @@ const Hello = () => {
                   <div
                     style={{
                       width:
-                        (computer.length + serial.length + model.length) / 3 +
+                        (computer.length + serial.length + model.length) / 1 +
                         "%",
                     }}
                     className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-pink-500 transition animate-heartbeat"

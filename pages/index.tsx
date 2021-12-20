@@ -70,7 +70,7 @@ const Login: NextPage = () => {
 
   return (
     <>
-      {error && (
+      {success && (
         <Confetti
           width={width}
           height={height}
@@ -248,6 +248,9 @@ const Login: NextPage = () => {
                     "Sign in"
                   )}
                 </button>
+                <button className="mt-3 py-2 px-4 flex justify-center items-center text-sm font-semibold bg-pink-50 text-pink-700 hover:bg-pink-100 transition ease-in duration-200 text-center focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg">
+                  <a onClick={() => router.push("/signup")}>Sign up</a>
+                </button>
               </div>
             </form>
             {email !== "" || password !== "" ? (
@@ -260,7 +263,7 @@ const Login: NextPage = () => {
                   {password.length + email.length < 100 && (
                     <div
                       style={{
-                        width: (password.length + email.length) / 2 + "%",
+                        width: (password.length + email.length) / 1 + "%",
                       }}
                       className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-pink-500 transition animate-heartbeat"
                     ></div>
