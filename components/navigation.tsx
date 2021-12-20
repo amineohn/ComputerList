@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Firebase } from "../libs/firebase";
 import { useRouter } from "next/router";
 import { Transition } from "@headlessui/react";
@@ -6,6 +6,16 @@ const Navigation = () => {
   const router = useRouter();
   const fire = new Firebase();
   const [showModal, setShowModal] = useState(false);
+  const [blur, setBlur] = useState(0);
+  useEffect(() => {
+    const onScroll = () => setBlur(window.scrollY / 200);
+
+    window.addEventListener("scroll", onScroll);
+
+    return function cleanup() {
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, []);
   return (
     <>
       <Transition
@@ -17,11 +27,15 @@ const Navigation = () => {
         leaveFrom="opacity-100"
         leaveTo="opacity-0"
       >
-        <nav className="fixed z-auto inset-0 flex items-start justify-end mt-28 mr-5">
+        <nav
+          className={`fixed z-auto inset-0 flex items-start justify-end mt-28 mr-5 ${
+            blur ? `backdrop-blur-sm` : ""
+          }`}
+        >
           <div className="fixed inset-0">
             <div className="absolute inset-0" />
           </div>
-          <div className="relative bg-blue-500 text-gray-300 p-4 rounded-lg shadow-lg flex flex-col w-64">
+          <div className="relative bg-neutral-800 text-gray-300 p-4 rounded-lg shadow-lg flex flex-col w-64">
             <div className="flex items-center justify-between">
               <div className="flex items-center">
                 <img
@@ -90,27 +104,6 @@ const Navigation = () => {
                       <span>Hello</span>
                     </a>
                   ) : null}
-                  {router.pathname !== "/account/reset" ? (
-                    <a
-                      onClick={() => {
-                        router.push("/account/reset");
-                        setShowModal(false);
-                      }}
-                      className="cursor-pointer group flex items-center px-2 py-2 text-base leading-6 font-medium rounded-md text-white !bg-blue-900 !bg-opacity-20 focus:outline-none focus:!bg-blue-700 transition ease-in-out duration-150"
-                    >
-                      <svg
-                        className="mr-4 h-5 w-5 text-gray-300 group-hover:text-gray-300 group-focus:text-gray-300 transition ease-in-out duration-150"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 448 512"
-                      >
-                        <path
-                          fill="currentColor"
-                          d="M400 224h-24v-72C376 68.2 307.8 0 224 0S72 68.2 72 152v72H48c-26.5 0-48 21.5-48 48v192c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V272c0-26.5-21.5-48-48-48zM264 392c0 22.1-17.9 40-40 40s-40-17.9-40-40v-48c0-22.1 17.9-40 40-40s40 17.9 40 40v48zm32-168H152v-72c0-39.7 32.3-72 72-72s72 32.3 72 72v72z"
-                        ></path>
-                      </svg>
-                      <span>Reset your password</span>
-                    </a>
-                  ) : null}
                   <a
                     onClick={() => {
                       fire.signOut();
@@ -137,46 +130,7 @@ const Navigation = () => {
           </div>
         </nav>
       </Transition>
-      <div>
-        <div className="flex justify-center">
-          <div className="w-full max-w-screen-xl px-4 py-8 mx-auto md:py-12 md:px-6 lg:px-8">
-            <div className="text-center">
-              <div className="mt-6 z-50">
-                <div className="flex">
-                  <div className="flex-shrink-0">
-                    <div className="ml-4">
-                      <button
-                        className="text-white font-medium hover:bg-white hover:bg-opacity-20 p-2 rounded-xl transition"
-                        onClick={() => setShowModal(true)}
-                      >
-                        <button
-                          className="p-1 text-white focus:outline-none focus:shadow-outline"
-                          aria-label="Close sidebar"
-                          onClick={() => setShowModal(!showModal)}
-                        >
-                          <svg
-                            className="h-6 w-6 text-white animate-pulse"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth="2"
-                              d="M4 6h16M4 12h16M4 18h7"
-                            />
-                          </svg>
-                        </button>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+
       <div className="fixed z-50 top-0 inset-x-0 p-6 transition duration-500 ease-in-out transform lg:bg-transparent lg:bg-opacity-100 backdrop-blur-sm bg-opacity-20">
         <div className="absolute inset-0 flex">
           <div
@@ -192,12 +146,12 @@ const Navigation = () => {
             <div className="flex-shrink-0">
               {showModal ? (
                 <button
-                  className="p-1 text-black focus:outline-none focus:shadow-outline"
+                  className="p-1 fill-current text-white focus:outline-none focus:shadow-outline"
                   aria-label="Close sidebar"
                   onClick={() => setShowModal(!showModal)}
                 >
                   <svg
-                    className="h-6 w-6 text-black animate-pulse"
+                    className="h-6 w-6 text-white"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -212,12 +166,12 @@ const Navigation = () => {
                 </button>
               ) : (
                 <button
-                  className="p-1 text-black focus:outline-none focus:shadow-outline"
+                  className="p-1 text-white focus:outline-none focus:shadow-outline"
                   aria-label="Close sidebar"
                   onClick={() => setShowModal(!showModal)}
                 >
                   <svg
-                    className="h-6 w-6 text-black animate-pulse"
+                    className="h-6 w-6 text-white"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"

@@ -22,6 +22,7 @@ export class Validate {
   frequency(frequency: string) {
     return configuration.regex.frequency.test(frequency);
   }
+
   errors(code: string, message: string) {
     switch (code) {
       case "auth/email-already-in-use":

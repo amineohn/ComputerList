@@ -4,7 +4,7 @@ body {
 }
 
 body {
-  @apply bg-white transition-all;
+  @apply bg-neutral-900 transition-all;
 }
 
 a {
@@ -51,6 +51,9 @@ datalist option:focus {
 }
 ::-webkit-scrollbar-corner {
   @apply hidden;
+}
+::-webkit-resizer {
+  display: none;
 }
 @tailwind base;
 @tailwind components;

@@ -127,6 +127,21 @@ export class Firebase {
     auth.onAuthStateChanged(callback);
   }
 
+  addComment(comment: string) {
+    const user = this.user();
+    const userData = this.userData();
+    const commentRef = this.collection("comments").doc();
+    const commentId = commentRef.id;
+    const commentData = {
+      comment,
+      userId: user?.uid,
+      userName: user?.displayName,
+      userPhotoUrl: user?.photoURL,
+      createdAt: new Date(),
+    };
+    commentRef.set(commentData);
+    userData.collection("comments").doc(commentId).set(commentData);
+  }
   currentPassword(currentPassword: string) {
     const credential = firebase.auth.EmailAuthProvider.credential(
       this.email() as string,
