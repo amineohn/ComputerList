@@ -21,7 +21,7 @@ const List = () => {
     <>
       <div
         className={`flex items-center justify-center min-h-screen mx-10 lg:mx-10 animate-heartbeat ${
-          data ? `animate-heartbeat` : ``
+          data ? `animate-heartbeat` : `animate-heartbeat`
         }`}
       >
         <div className="col-span-12">
