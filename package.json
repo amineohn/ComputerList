@@ -1,5 +1,5 @@
 {
-  "name": "clic-compost",
+  "name": "computer-list",
   "version": "0.2.0",
   "private": true,
   "scripts": {
@@ -41,10 +41,10 @@
     "next-seo": "^4.28.1",
     "next-superjson": "^0.0.2",
     "next-themes": "^0.0.15",
-    "react": "https://react-builds.vercel.app/api/prs/22807/packages/react",
+    "react": "18.0.0-alpha-9212d994b",
     "react-confetti": "^6.0.1",
     "react-device-detect": "^2.1.2",
-    "react-dom": "https://react-builds.vercel.app/api/prs/22807/packages/react-dom",
+    "react-dom": "18.0.0-alpha-9212d994b",
     "react-fade-in": "^2.0.1",
     "react-router-dom": "^6.1.1",
     "react-snowfall": "^1.1.1",
