@@ -250,6 +250,24 @@ const Login: NextPage = () => {
                 </button>
               </div>
             </form>
+            {email !== "" || password !== "" ? (
+              <div className="relative pt-1 animate-heartbeat w-52 mt-10">
+                <span className="text-neutral-50">
+                  {password.length + email.length < 100 &&
+                    password.length + email.length + "%"}
+                </span>
+                <div className="overflow-hidden h-2 mb-4 text-xs flex rounded bg-pink-200">
+                  {password.length + email.length < 100 && (
+                    <div
+                      style={{
+                        width: (password.length + email.length) / 2 + "%",
+                      }}
+                      className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-pink-500 transition animate-heartbeat"
+                    ></div>
+                  )}
+                </div>
+              </div>
+            ) : null}
           </div>
         </div>
       </FadeIn>
