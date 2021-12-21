@@ -21,8 +21,5 @@
 			"launchAutoHide": true,
 			"backgroundColor": "#ffffffff"
 		}
-	},
-	"server": {
-		"url": "https://computer-list.vercel.app/"
 	}
 }

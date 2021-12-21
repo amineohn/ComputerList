@@ -21,9 +21,6 @@ const config: CapacitorConfig = {
       backgroundColor: "#ffffffff",
     },
   },
-  server: {
-    url: configuration.server.url,
-  },
 };
 
 export default config;
