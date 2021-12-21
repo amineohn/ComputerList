@@ -67,14 +67,34 @@ const List = () => {
                               <td className="p-3">{data.serial}</td>
                               <td className="p-3 font-bold">{data.model}</td>
                               <td className="p-3 text-center">
-                                <span
-                                  className={`text-center ${
-                                    data.checked
-                                      ? "bg-green-100 text-green-500"
-                                      : "bg-red-100 text-red-500"
-                                  } rounded-md px-2`}
-                                >
-                                  {data.checked ? "Yes" : "No"}
+                                <span className={`text-center rounded-md px-2`}>
+                                  {data.checked ? (
+                                    <a
+                                      href="#"
+                                      className={`${
+                                        data.checked
+                                          ? "text-green-500"
+                                          : "text-red-500"
+                                      } hover:text-gray-100 mx-2`}
+                                    >
+                                      <i className="material-icons-outlined text-base">
+                                        edit
+                                      </i>
+                                    </a>
+                                  ) : (
+                                    <a
+                                      href="#"
+                                      className={`${
+                                        data.checked
+                                          ? "text-green-500"
+                                          : "text-red-500"
+                                      } hover:text-gray-100 mx-2`}
+                                    >
+                                      <i className="material-icons-outlined text-base">
+                                        visibility
+                                      </i>
+                                    </a>
+                                  )}
                                 </span>
                               </td>
                               <td className="p-3"></td>
@@ -165,7 +185,26 @@ const List = () => {
                             No data
                           </span>
                         </td>
-                        <td className="p-3"></td>
+                        <td className="p-3">
+                          <div className="flex justify-center">
+                            <div className="">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="w-5 h-5"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth="2"
+                                  d="M11 17l-5-5m0 0l5-5m-5 5h12a2 2 0 002-2V5a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                                />
+                              </svg>
+                            </div>
+                          </div>
+                        </td>
                       </tr>
                     </tbody>
                   </table>
