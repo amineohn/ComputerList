@@ -1,8 +1,8 @@
 export const configuration = {
   appId: "com.computerlist.app",
-  nameApp: "name-app",
+  nameApp: "Computer List",
   server: {
-    url: "https://next-tailwind-firebase-capacitor-9ja7hw8uz-amineprojet7.vercel.app",
+    url: "https://computer-list.vercel.app/",
   },
   title: "title",
   description: "",
