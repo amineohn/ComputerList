@@ -76,6 +76,24 @@ tr td:nth-child(1),
 tr th:nth-child(1) {
   border-radius: 0.625rem 0 0 0.625rem;
 }
+ul {
+  @apply flex justify-center items-center space-x-1;
+}
+.selected {
+  @apply px-4 py-2 rounded-full bg-pink-50 text-pink-700 hover:bg-pink-100 transition;
+}
+li {
+  @apply px-4 py-2 rounded-full bg-gray-200 text-gray-600 hover:bg-gray-300 transition;
+}
+.previous {
+  @apply px-2 py-2 rounded-full bg-pink-50 text-pink-700 hover:bg-pink-100 transition;
+}
+.disabled {
+  @apply px-2 py-2 rounded-full bg-gray-200 text-gray-600 hover:bg-gray-300 transition;
+}
+.next {
+  @apply px-2 py-2 rounded-full bg-pink-50 text-pink-700 hover:bg-pink-100 transition;
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

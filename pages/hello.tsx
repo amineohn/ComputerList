@@ -14,6 +14,7 @@ const Hello = () => {
   const [success, setSuccess] = useState("");
   const fire = new Firebase();
   const { width, height } = useWindowSize();
+
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
@@ -141,7 +142,7 @@ const Hello = () => {
           )}
         </div>
         <div className="container mx-auto px-4 space-y-5 max-w-xs">
-          <h1 className="text-2xl font-bold text-neutral-50">Add a Computer</h1>
+          <h1 className="text-2xl font-bold text-neutral-50">Add Computer</h1>
           <form method="POST" onSubmit={handleSubmit}>
             <div className="space-y-2">
               <input
@@ -174,9 +175,7 @@ const Hello = () => {
                   onChange={(e) => setChecked(e.target.checked)}
                   className="form-checkbox h-5 w-5 text-pink-600 rounded-lg transition bg-neutral-800 select-none"
                 />
-                <span className="ml-2 text-neutral-50 text-sm">
-                  Computer is checked
-                </span>
+                <span className="ml-2 text-neutral-50 text-sm">Checked ?</span>
               </label>
             </div>
             <button
