@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Firebase } from "../libs/firebase";
 import { Post } from "../libs/types";
 import ReactPaginate from "react-paginate";
@@ -9,25 +9,24 @@ const List = () => {
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
 
-  useEffect(() => {
-    fire
-      .collection("computer")
-      .orderBy("date", "desc")
-      .onSnapshot((snapshot) => {
-        const data = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-        const endOffset = itemOffset + 5;
-        setData(pageCount ? data.slice(itemOffset, endOffset) : data);
-        setPageCount(Math.ceil(data.length / 3));
-      });
-  }, [itemOffset, 5]);
+  fire
+    .collection("computer")
+    .orderBy("checked", "desc")
+    .onSnapshot((snapshot) => {
+      const data = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      const endOffset = itemOffset + 8;
+      setData(data.slice(itemOffset, endOffset));
+      setPageCount(Math.ceil(data.length / 5));
+    });
 
   const handlePageClick = (event) => {
     const newOffset = event.selected % data.length;
     setItemOffset(newOffset);
   };
+
   return (
     <>
       <div className="lg:block flex mx-10">
