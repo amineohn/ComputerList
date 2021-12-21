@@ -35,7 +35,7 @@ const Navigation = () => {
           <div className="fixed inset-0">
             <div className="absolute inset-0" />
           </div>
-          <div className="relative bg-neutral-800 text-gray-300 p-4 rounded-lg shadow-lg flex flex-col w-64">
+          <div className="relative bg-neutral-800 text-neutral-300 p-4 rounded-lg shadow-lg flex flex-col w-64">
             <div className="flex items-center justify-between">
               <div className="flex items-center">
                 <img

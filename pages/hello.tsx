@@ -57,12 +57,12 @@ const Hello = () => {
       <div className="my-60 mx-5 animate-scaleUp space-y-2">
         <div className="flex justify-center">
           {error && (
-            <div className="p-8 bg-gray-800 shadow-md hover:shodow-lg rounded-2xl !max-w-xl animate-heartbeat">
+            <div className="p-8 bg-neutral-800 shadow-md hover:shodow-lg rounded-2xl !max-w-xl animate-heartbeat">
               <div className="flex items-center justify-between">
                 <div className="flex items-center">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="w-16 h-16 rounded-2xl p-3 border border-gray-800 text-blue-400 bg-gray-900"
+                    className="w-16 h-16 rounded-2xl p-3 border border-neutral-800 text-neutral-400 bg-neutral-900"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -75,10 +75,10 @@ const Hello = () => {
                     ></path>
                   </svg>
                   <div className="flex flex-col ml-3">
-                    <div className="font-medium leading-none text-gray-100">
+                    <div className="font-medium leading-none text-neutral-100">
                       Error is there's fam ?
                     </div>
-                    <p className="text-sm text-gray-500 leading-none mt-1">
+                    <p className="text-sm text-neutral-500 leading-none mt-1">
                       {error}
                     </p>
                   </div>
@@ -87,7 +87,7 @@ const Hello = () => {
                   onClick={() => {
                     setError("");
                   }}
-                  className="flex-no-shrink px-5 ml-4 py-2 text-sm shadow-sm hover:shadow-lg font-medium tracking-wider border-2 bg-blue-50 text-blue-900 hover:bg-blue-100 rounded-full"
+                  className="flex-no-shrink px-5 ml-4 py-2 text-sm shadow-sm hover:shadow-lg font-medium tracking-wider border-2 bg-neutral-50 text-neutral-900 hover:bg-neutral-100 rounded-full"
                 >
                   Delete
                 </button>
@@ -114,7 +114,7 @@ const Hello = () => {
                       ></path>
                     </svg>
                     <div className="flex flex-col ml-3">
-                      <div className="font-medium leading-none text-gray-100">
+                      <div className="font-medium leading-none text-neutral-100">
                         nice gg
                       </div>
                       <p className="text-sm text-pink-200 leading-none mt-1">

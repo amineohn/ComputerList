@@ -39,8 +39,8 @@ const List = () => {
             >
               <div className="col-span-12">
                 <div className="">
-                  <table className="table text-gray-400 border-separate space-y-6 text-sm max-w-xl">
-                    <thead className="bg-neutral-800 text-gray-500">
+                  <table className="table text-neutral-400 border-separate space-y-6 text-sm max-w-xl">
+                    <thead className="bg-neutral-800 text-neutral-500">
                       <tr>
                         <th className="p-3">Computer</th>
                         <th className="p-3 text-left">Serial Number</th>
@@ -58,7 +58,7 @@ const List = () => {
                                 <div className="flex align-items-center">
                                   <div className="ml-3">
                                     <div className="">{data.computer}</div>
-                                    <div className="text-gray-500">
+                                    <div className="text-neutral-500">
                                       {data.date}
                                     </div>
                                   </div>
@@ -132,8 +132,8 @@ const List = () => {
             <div className="flex items-center h-screen justify-center animate-heartbeat">
               <div className="col-span-12">
                 <div className="overflow-auto lg:overflow-visible">
-                  <table className="table text-gray-400 border-separate space-y-6 text-sm">
-                    <thead className="bg-neutral-800 text-gray-500">
+                  <table className="table text-neutral-400 border-separate space-y-6 text-sm">
+                    <thead className="bg-neutral-800 text-neutral-500">
                       <tr>
                         <th className="p-3">Computer</th>
                         <th className="p-3 text-left">Serial Number</th>
@@ -148,7 +148,7 @@ const List = () => {
                           <div className="flex align-items-center">
                             <div className="ml-3">
                               <div className="">No data</div>
-                              <div className="text-gray-500">No data</div>
+                              <div className="text-neutral-500">No data</div>
                             </div>
                           </div>
                         </td>
