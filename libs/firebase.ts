@@ -169,27 +169,6 @@ export class Firebase {
       .then((data) => data)
       .catch((error) => console.log("Error getting documents: ", error));
   }
-
-  data(
-    phone: string,
-    name: string,
-    email: string,
-    frequency: string,
-    collectTime: string,
-    address: string,
-    collection: string
-  ) {
-    return {
-      id: this.collection(collection).doc().id,
-      phone: phone,
-      name: name,
-      email: email,
-      frequency: frequency,
-      collectTime: collectTime,
-      address: address,
-    };
-  }
-
   async signIn(
     email: string,
     password: string,
