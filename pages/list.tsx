@@ -32,6 +32,7 @@ const List = () => {
     const offset = selectedPage * 10;
     setItemOffset(offset);
   };
+
   const download = () => {
     try {
       const csvData = [
@@ -49,7 +50,9 @@ const List = () => {
             .replace(`(?:,|\n|^)("(?:(?:"")*[^"]*)*"|[^",\n]*|(?:\n|$))`, "")
             .toUpperCase(),
         ]),
-      ].join("\n");
+      ]
+        .join("\n")
+        .replace(/\n$/, "");
       const csv = new Blob([csvData], {
         type: "text/csv",
       });
@@ -64,11 +67,9 @@ const List = () => {
       setDownload(false);
       console.log(error);
     }
-    useEffect((): void => {
-      setInterval(() => {
-        setDownload(false);
-      }, 1000);
-    }, []);
+    setInterval(() => {
+      setDownload(false);
+    }, 1000);
   };
   return (
     <>
