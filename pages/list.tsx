@@ -73,34 +73,14 @@ const List = () => {
                               <td className="p-3">{data.serial}</td>
                               <td className="p-3 font-bold">{data.model}</td>
                               <td className="p-3 text-center">
-                                <span className={`text-center rounded-md px-2`}>
-                                  {data.checked ? (
-                                    <a
-                                      href="#"
-                                      className={`${
-                                        data.checked
-                                          ? "text-green-500"
-                                          : "text-red-500"
-                                      } hover:text-gray-100 mx-2`}
-                                    >
-                                      <i className="material-icons-outlined text-base">
-                                        edit
-                                      </i>
-                                    </a>
-                                  ) : (
-                                    <a
-                                      href="#"
-                                      className={`${
-                                        data.checked
-                                          ? "text-green-500"
-                                          : "text-red-500"
-                                      } hover:text-gray-100 mx-2`}
-                                    >
-                                      <i className="material-icons-outlined text-base">
-                                        visibility
-                                      </i>
-                                    </a>
-                                  )}
+                                <span
+                                  className={`text-center rounded-md px-2 ${
+                                    data.checked
+                                      ? "text-green-500"
+                                      : "text-red-500"
+                                  }`}
+                                >
+                                  {data.checked ? "✓" : "✗"}
                                 </span>
                               </td>
                               <td className="p-3"></td>
