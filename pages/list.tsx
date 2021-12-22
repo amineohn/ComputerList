@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Firebase } from "../libs/firebase";
-import { Post, Selected } from "../libs/types";
+import { Computer, Selected } from "../libs/types";
 import ReactPaginate from "react-paginate";
 
 const List = () => {
@@ -35,11 +35,19 @@ const List = () => {
   const download = () => {
     try {
       const csvData = [
-        ...data.map((item) => [
-          item.serial.replace(/\s/g, "").toUpperCase(),
-          item.computer.replace(/\s/g, "").toUpperCase(),
-          item.model.replace(/\s/g, "").toUpperCase(),
-          item.date.replace(/\s/g, "").toUpperCase(),
+        ...data.map((item: Computer) => [
+          item.serial
+            .replace(`(?:,|\n|^)("(?:(?:"")*[^"]*)*"|[^",\n]*|(?:\n|$))`, "")
+            .toUpperCase(),
+          item.computer
+            .replace(`(?:,|\n|^)("(?:(?:"")*[^"]*)*"|[^",\n]*|(?:\n|$))`, "")
+            .toUpperCase(),
+          item.model
+            .replace(`(?:,|\n|^)("(?:(?:"")*[^"]*)*"|[^",\n]*|(?:\n|$))`, "")
+            .toUpperCase(),
+          item.date
+            .replace(`(?:,|\n|^)("(?:(?:"")*[^"]*)*"|[^",\n]*|(?:\n|$))`, "")
+            .toUpperCase(),
         ]),
       ].join("\n");
       const csv = new Blob([csvData], {
@@ -56,6 +64,11 @@ const List = () => {
       setDownload(false);
       console.log(error);
     }
+    useEffect((): void => {
+      setInterval(() => {
+        setDownload(false);
+      }, 1000);
+    }, []);
   };
   return (
     <>
@@ -88,14 +101,6 @@ const List = () => {
                     </p>
                   </div>
                 </div>
-                <button
-                  onClick={() => {
-                    setDownload(false);
-                  }}
-                  className="flex-no-shrink px-5 ml-4 py-2 text-sm shadow-sm hover:shadow-lg font-medium tracking-wider border-2 bg-pink-50 text-pink-700 hover:bg-pink-100 rounded-full"
-                >
-                  Delete
-                </button>
               </div>
             </div>
           )}
@@ -135,8 +140,8 @@ const List = () => {
                     <tbody className="">
                       <>
                         {data &&
-                          data.map((data: Post, index: string) => (
-                            <tr className="bg-neutral-800" key={index}>
+                          data.map((data: Computer) => (
+                            <tr className="bg-neutral-800" key={data.index}>
                               <td className="p-3">
                                 <div className="flex align-items-center">
                                   <div className="ml-3">

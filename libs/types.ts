@@ -6,7 +6,8 @@ export type Errors = {
   code: number;
   message: string;
 };
-export type Post = {
+export type Computer = {
+  index: number;
   checked: boolean;
   computer: string;
   date: string;
