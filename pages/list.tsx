@@ -8,7 +8,7 @@ const List = () => {
   const [data, setData] = useState([{}] as any);
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
-
+  const [downloaded, setDownload] = useState(false);
   fire
     .collection("computer")
     .orderBy("date", "desc")
@@ -33,28 +33,72 @@ const List = () => {
     setItemOffset(offset);
   };
   const download = () => {
-    const csvData = [
-      ...data.map((item) => [
-        item.serial.replace(/\s/g, "").toUpperCase(),
-        item.computer.replace(/\s/g, "").toUpperCase(),
-        item.model.replace(/\s/g, "").toUpperCase(),
-        item.date.replace(/\s/g, "").toUpperCase(),
-      ]),
-    ].join("\n");
-    const csv = new Blob([csvData], {
-      type: "text/csv",
-    });
-    const url = URL.createObjectURL(csv);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "data.csv";
-    a.click();
-    URL.revokeObjectURL(url);
+    try {
+      const csvData = [
+        ...data.map((item) => [
+          item.serial.replace(/\s/g, "").toUpperCase(),
+          item.computer.replace(/\s/g, "").toUpperCase(),
+          item.model.replace(/\s/g, "").toUpperCase(),
+          item.date.replace(/\s/g, "").toUpperCase(),
+        ]),
+      ].join("\n");
+      const csv = new Blob([csvData], {
+        type: "text/csv",
+      });
+      const url = URL.createObjectURL(csv);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "data.csv";
+      a.click();
+      URL.revokeObjectURL(url);
+      setDownload(true);
+    } catch (error) {
+      setDownload(false);
+      console.log(error);
+    }
   };
   return (
     <>
       <div className="mx-10">
         <>
+          {downloaded && (
+            <div className="fixed left-0 bottom-0 m-4 p-8 bg-pink-800 shadow-md hover:shodow-lg rounded-2xl max-w-md animate-heartbeat">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-16 h-16 rounded-2xl p-3 border border-pink-800 text-pink-400 bg-pink-900"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    ></path>
+                  </svg>
+                  <div className="flex flex-col ml-3">
+                    <div className="font-medium leading-none text-neutral-100">
+                      nice gg
+                    </div>
+                    <p className="text-sm text-pink-200 leading-none mt-1">
+                      woohooo you did it
+                    </p>
+                  </div>
+                </div>
+                <button
+                  onClick={() => {
+                    setDownload(false);
+                  }}
+                  className="flex-no-shrink px-5 ml-4 py-2 text-sm shadow-sm hover:shadow-lg font-medium tracking-wider border-2 bg-pink-50 text-pink-700 hover:bg-pink-100 rounded-full"
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
+          )}
           {data.length > 0 ? (
             <div
               className={`flex items-center h-screen justify-center animate-heartbeat ${
@@ -62,7 +106,7 @@ const List = () => {
               }`}
             >
               <button
-                className="fixed bottom-0 middle-0 right-0 m-4 p-2 bg-pink-100 text-pink-400 hover:bg-pink-50 transition hover:text-pink-500 rounded-2xl shadow-lg"
+                className="fixed bottom-0 right-0 m-4 p-2 bg-pink-100 text-pink-400 hover:bg-pink-50 transition hover:text-pink-500 rounded-2xl shadow-lg"
                 onClick={download}
               >
                 <svg
