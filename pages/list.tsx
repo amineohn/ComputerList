@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Firebase } from "../libs/firebase";
 import { Computer, Selected } from "../libs/types";
 import ReactPaginate from "react-paginate";
@@ -50,6 +50,12 @@ const List = () => {
           )}\n${item.serial.replace(
             `(?:,|\n|^)("(?:(?:"")*[^"]*)*"|[^",\n]*|(?:\n|$))`,
             ""
+          )}\n${item.session.replace(
+            `(?:,|\n|^)("(?:(?:"")*[^"]*)*"|[^",\n]*|(?:\n|$))`,
+            ""
+          )}\n${item.assigned.replace(
+            `(?:,|\n|^)("(?:(?:"")*[^"]*)*"|[^",\n]*|(?:\n|$))`,
+            ""
           )}\n${item.date.replace(
             `(?:,|\n|^)("(?:(?:"")*[^"]*)*"|[^",\n]*|(?:\n|$))`,
             ""
@@ -86,7 +92,7 @@ const List = () => {
             />
           )}
           {downloaded && (
-            <div className="fixed left-0 bottom-0 m-4 p-8 bg-pink-800 shadow-md hover:shodow-lg rounded-2xl max-w-md animate-heartbeat">
+            <div className="fixed left-0 bottom-0 m-4 p-8 bg-pink-800 shadow-md hover:shodow-lg rounded-2xl max-w-xl animate-heartbeat">
               <div className="flex items-center justify-between">
                 <div className="flex items-center">
                   <svg
@@ -143,12 +149,14 @@ const List = () => {
                       <tr>
                         <th className="p-3">Computer</th>
                         <th className="p-3 text-left">Serial Number</th>
+                        <th className="p-3 text-left">User Session</th>
+                        <th className="p-3 text-left">Assigned</th>
                         <th className="p-3 text-left">Model</th>
                         <th className="p-3 text-left">Checked</th>
                         <th className="p-3 text-left"></th>
                       </tr>
                     </thead>
-                    <tbody className="">
+                    <tbody className="w-full">
                       <>
                         {data &&
                           data.map((data: Computer) => (
@@ -166,6 +174,16 @@ const List = () => {
                               <td className="p-3">
                                 <span className="bg-transparent lg:bg-neutral-900 z-50 lg:p-2 w-full p-1 rounded-lg text-neutral-50 text-xs lg:text-xs">
                                   {data.serial}
+                                </span>
+                              </td>
+                              <td className="p-3">
+                                <span className="z-50 lg:p-2 w-full p-1 rounded-lg text-neutral-50 text-xs lg:text-xs">
+                                  {data.assigned}
+                                </span>
+                              </td>
+                              <td className="p-3">
+                                <span className="z-50 lg:p-2 w-full p-1 rounded-lg text-neutral-50 text-xs lg:text-xs">
+                                  {data.session}
                                 </span>
                               </td>
                               <td className="p-3 font-bold">{data.model}</td>

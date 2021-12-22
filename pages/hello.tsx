@@ -10,6 +10,8 @@ const Hello = () => {
   const [computer, setComputer] = useState("");
   const [model, setModel] = useState("");
   const [serial, setSerial] = useState("");
+  const [session, setSession] = useState("");
+  const [assigned, setAssigned] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const fire = new Firebase();
@@ -22,6 +24,8 @@ const Hello = () => {
         computer.length === 0 ||
         model.length === 0 ||
         serial.length === 0 ||
+        session.length === 0 ||
+        assigned.length === 0 ||
         checked === false
       ) {
         setError("Please fill all fields");
@@ -31,6 +35,8 @@ const Hello = () => {
           computer,
           model,
           serial,
+          session,
+          assigned,
           date: new Date().toLocaleString(),
         });
         setSuccess("yeaah");
@@ -166,6 +172,20 @@ const Hello = () => {
                 value={serial}
                 onChange={(e) => setSerial(e.target.value)}
               />
+              <input
+                className="transition flex-1 appearance-none border border-neutral-800 w-full py-2 px-4 bg-neutral-800 text-neutral-50 placeholder-neutral-50 rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-pink-600 focus:border-transparent"
+                type="text"
+                placeholder="User Session"
+                value={session}
+                onChange={(e) => setSession(e.target.value)}
+              />
+              <input
+                className="transition flex-1 appearance-none border border-neutral-800 w-full py-2 px-4 bg-neutral-800 text-neutral-50 placeholder-neutral-50 rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-pink-600 focus:border-transparent"
+                type="text"
+                placeholder="Who assigned this computer"
+                value={assigned}
+                onChange={(e) => setAssigned(e.target.value)}
+              />
               <label className="inline-flex items-center mt-3">
                 <input
                   id="checked"
@@ -188,18 +208,40 @@ const Hello = () => {
           {checked == true ||
           serial !== "" ||
           model !== "" ||
-          computer !== "" ? (
+          computer !== "" ||
+          session !== "" ||
+          assigned !== "" ? (
             <div className="relative pt-1 animate-heartbeat">
               <span className="text-neutral-50">
-                {computer.length + serial.length + model.length < 100 &&
-                  computer.length + serial.length + model.length + "%"}
+                {computer.length +
+                  serial.length +
+                  model.length +
+                  session.length +
+                  assigned.length <
+                  100 &&
+                  computer.length +
+                    serial.length +
+                    model.length +
+                    session.length +
+                    assigned.length +
+                    "%"}
               </span>
               <div className="overflow-hidden h-2 mb-4 text-xs flex rounded bg-pink-200">
-                {computer.length + serial.length + model.length < 100 && (
+                {computer.length +
+                  serial.length +
+                  model.length +
+                  session.length +
+                  assigned.length <
+                  100 && (
                   <div
                     style={{
                       width:
-                        (computer.length + serial.length + model.length) / 1 +
+                        (computer.length +
+                          serial.length +
+                          model.length +
+                          session.length +
+                          assigned.length) /
+                          1 +
                         "%",
                     }}
                     className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-pink-500 transition animate-heartbeat"

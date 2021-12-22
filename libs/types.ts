@@ -13,6 +13,8 @@ export type Computer = {
   date: string;
   model: string;
   serial: string;
+  assigned: string;
+  session: string;
 };
 export type Selected = {
   selected: HTMLSelectElement;
