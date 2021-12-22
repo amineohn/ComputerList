@@ -22,7 +22,6 @@ export class Firebase {
   }
   constructor() {
     firebase.initializeApp(this.settings());
-    console.log("Initialize Firebase app(s): %d", firebase.apps.length);
   }
 
   user() {

@@ -1,6 +1,6 @@
 html,
 body {
-  @apply font-default transition ease-in-out antialiased p-0 m-0;
+  @apply font-default transition ease-in-out antialiased p-0 m-0 selection:bg-pink-50 selection:text-pink-400;
 }
 
 body {

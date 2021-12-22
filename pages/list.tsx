@@ -8,7 +8,6 @@ const List = () => {
   const [data, setData] = useState([{}] as any);
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
-
   fire
     .collection("computer")
     .orderBy("checked", "desc")
@@ -17,13 +16,17 @@ const List = () => {
         id: doc.id,
         ...doc.data(),
       }));
-      const endOffset = itemOffset + 8;
-      setData(data.slice(itemOffset, endOffset));
-      setPageCount(Math.ceil(data.length / 5));
-    });
 
+      // we use endAfter to get the last 8 items
+      const endOffset = itemOffset + 8;
+      // set data with pagination slice.
+      setData(data.slice(itemOffset, endOffset));
+
+      // we set the page count to the total number of items divided by 8
+      setPageCount(Math.ceil(data.length / 8));
+    });
   const handlePageClick = (event) => {
-    const newOffset = event.selected % data.length;
+    const newOffset = (event.selected * 8) % data.length;
     setItemOffset(newOffset);
   };
 
@@ -52,7 +55,7 @@ const List = () => {
                     <tbody className="">
                       <>
                         {data &&
-                          data.map((data: Post, index) => (
+                          data.map((data: Post, index: string) => (
                             <tr className="bg-neutral-800" key={index}>
                               <td className="p-3">
                                 <div className="flex align-items-center">
@@ -122,7 +125,7 @@ const List = () => {
                             </svg>
                           }
                           onPageChange={handlePageClick}
-                          pageRangeDisplayed={2}
+                          pageRangeDisplayed={10}
                           pageCount={pageCount}
                           previousLabel={
                             <svg

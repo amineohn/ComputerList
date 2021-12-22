@@ -53,6 +53,7 @@
     "stripe": "^8.194.0",
     "superjson": "^1.8.0",
     "swr": "^1.1.1",
+    "tailwindcss-selection-variant": "^0.1.0",
     "unfetch": "^4.2.0"
   },
   "devDependencies": {

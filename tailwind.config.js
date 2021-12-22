@@ -4,6 +4,8 @@ module.exports = {
   darkMode: "", // or 'media' or 'class'
   theme: {
     extend: {
+      textColor: ["selection"],
+      backgroundColor: ["selection"],
       fontFamily: {
         default: [
           "-apple-system",
@@ -177,5 +179,8 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [require("@tailwindcss/forms")],
+  plugins: [
+    require("@tailwindcss/forms"),
+    require("tailwindcss-selection-variant"),
+  ],
 };
