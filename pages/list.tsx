@@ -33,17 +33,15 @@ const List = () => {
     setItemOffset(offset);
   };
   const download = () => {
-    // csv download code
     const csvData = [
-      ["serial", "computer", "model", "date"],
       ...data.map((item) => [
-        item.serial,
-        item.computer,
-        item.model,
-        item.date,
+        item.serial.replace(/\s/g, "").toUpperCase(),
+        item.computer.replace(/\s/g, "").toUpperCase(),
+        item.model.replace(/\s/g, "").toUpperCase(),
+        item.date.replace(/\s/g, "").toUpperCase(),
       ]),
-    ];
-    const csv = new Blob([csvData.join("\n")], {
+    ].join("\n");
+    const csv = new Blob([csvData], {
       type: "text/csv",
     });
     const url = URL.createObjectURL(csv);
