@@ -109,45 +109,47 @@ const List = () => {
                       </>
 
                       <div className="flex justify-center animate-heartbeat">
-                        <ReactPaginate
-                          breakLabel="..."
-                          nextLabel={
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              className="w-5 h-5"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                d="M13 7l5 5m0 0l-5 5m5-5H6"
-                              />
-                            </svg>
-                          }
-                          onPageChange={handlePageClick as any}
-                          pageRangeDisplayed={10}
-                          pageCount={pageCount}
-                          previousLabel={
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              className="w-5 h-5"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                d="M11 17l-5-5m0 0l5-5m-5 5h12"
-                              />
-                            </svg>
-                          }
-                          renderOnZeroPageCount={null || undefined}
-                        />
+                        {pageCount > 1 && (
+                          <ReactPaginate
+                            breakLabel="..."
+                            nextLabel={
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="w-5 h-5"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth="2"
+                                  d="M13 7l5 5m0 0l-5 5m5-5H6"
+                                />
+                              </svg>
+                            }
+                            onPageChange={handlePageClick as any}
+                            pageRangeDisplayed={10}
+                            pageCount={pageCount}
+                            previousLabel={
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="w-5 h-5"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth="2"
+                                  d="M11 17l-5-5m0 0l5-5m-5 5h12"
+                                />
+                              </svg>
+                            }
+                            renderOnZeroPageCount={null || undefined}
+                          />
+                        )}
                       </div>
                     </tbody>
                   </table>
