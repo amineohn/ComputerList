@@ -35,7 +35,7 @@ const List = () => {
 
   return (
     <>
-      <div className="lg:block flex mx-10">
+      <div className="mx-10">
         <>
           {data.length > 0 ? (
             <div
@@ -71,7 +71,7 @@ const List = () => {
                                 </div>
                               </td>
                               <td className="p-3">
-                                <span className="bg-neutral-900 z-50 p-2 rounded-lg text-neutral-50">
+                                <span className="bg-neutral-900 z-50 lg:p-2 w-full p-1 rounded-lg text-neutral-50 text-xs lg:text-xs">
                                   {data.serial}
                                 </span>
                               </td>
