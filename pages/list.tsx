@@ -37,9 +37,9 @@ const List = () => {
     setItemOffset(offset);
   };
 
-  const download = () => {
+  const download = async () => {
     try {
-      const csvData = data.map((item: Computer) => {
+      const csvData = await data.map((item: Computer) => {
         return (
           `${item.computer.replace(
             `(?:,|\n|^)("(?:(?:"")*[^"]*)*"|[^",\n]*|(?:\n|$))`,
