@@ -11,7 +11,7 @@ const List = () => {
 
   fire
     .collection("computer")
-    .orderBy("checked", "desc")
+    .orderBy("date", "desc")
     .onSnapshot((snapshot) => {
       const data = snapshot.docs.map((doc) => ({
         id: doc.id,
