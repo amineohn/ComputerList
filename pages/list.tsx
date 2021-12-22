@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Firebase } from "../libs/firebase";
 import { Post, Selected } from "../libs/types";
 import ReactPaginate from "react-paginate";
@@ -32,7 +32,27 @@ const List = () => {
     const offset = selectedPage * 10;
     setItemOffset(offset);
   };
-
+  const download = () => {
+    // csv download code
+    const csvData = [
+      ["serial", "computer", "model", "date"],
+      ...data.map((item) => [
+        item.serial,
+        item.computer,
+        item.model,
+        item.date,
+      ]),
+    ];
+    const csv = new Blob([csvData.join("\n")], {
+      type: "text/csv",
+    });
+    const url = URL.createObjectURL(csv);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "data.csv";
+    a.click();
+    URL.revokeObjectURL(url);
+  };
   return (
     <>
       <div className="mx-10">
@@ -43,6 +63,21 @@ const List = () => {
                 data ? `animate-heartbeat` : `animate-heartbeat`
               }`}
             >
+              <button
+                className="fixed bottom-0 middle-0 right-0 m-4 p-2 bg-pink-100 text-pink-400 hover:bg-pink-50 transition hover:text-pink-500 rounded-2xl shadow-lg"
+                onClick={download}
+              >
+                <svg
+                  className="w-5 h-5"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 640 512"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M537.6 226.6c4.1-10.7 6.4-22.4 6.4-34.6 0-53-43-96-96-96-19.7 0-38.1 6-53.3 16.2C367 64.2 315.3 32 256 32c-88.4 0-160 71.6-160 160 0 2.7.1 5.4.2 8.1C40.2 219.8 0 273.2 0 336c0 79.5 64.5 144 144 144h368c70.7 0 128-57.3 128-128 0-61.9-44-113.6-102.4-125.4z"
+                  ></path>
+                </svg>
+              </button>
               <div className="col-span-12">
                 <div className="">
                   <table className="table text-neutral-400 border-separate space-y-6 text-sm max-w-xl">
