@@ -2,12 +2,16 @@ import { useEffect, useState } from "react";
 import { Firebase } from "../libs/firebase";
 import { Computer, Selected } from "../libs/types";
 import ReactPaginate from "react-paginate";
+import Confetti from "react-confetti";
+import useWindowSize from "react-use/lib/useWindowSize";
 
 const List = () => {
   const fire = new Firebase();
   const [data, setData] = useState([{}] as any);
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
+  const { width, height } = useWindowSize();
+
   const [downloaded, setDownload] = useState(false);
   fire
     .collection("computer")
@@ -69,12 +73,19 @@ const List = () => {
     }
     setInterval(() => {
       setDownload(false);
-    }, 1000);
+    }, 5000);
   };
   return (
     <>
       <div className="mx-10">
         <>
+          {downloaded && (
+            <Confetti
+              width={width}
+              height={height}
+              className="z-50 animate-conffeti"
+            />
+          )}
           {downloaded && (
             <div className="fixed left-0 bottom-0 m-4 p-8 bg-pink-800 shadow-md hover:shodow-lg rounded-2xl max-w-md animate-heartbeat">
               <div className="flex items-center justify-between">
@@ -154,7 +165,7 @@ const List = () => {
                                 </div>
                               </td>
                               <td className="p-3">
-                                <span className="bg-neutral-900 z-50 lg:p-2 w-full p-1 rounded-lg text-neutral-50 text-xs lg:text-xs">
+                                <span className="bg-transparent lg:bg-neutral-900 z-50 lg:p-2 w-full p-1 rounded-lg text-neutral-50 text-xs lg:text-xs">
                                   {data.serial}
                                 </span>
                               </td>
@@ -248,7 +259,12 @@ const List = () => {
                           </div>
                         </td>
                         <td className="p-3">No data</td>
-                        <td className="p-3 font-bold">No data</td>
+
+                        <td className="p-3 font-bold">
+                          <span className="bg-transparent lg:bg-neutral-900 z-50 lg:p-2 w-full p-1 rounded-lg text-neutral-50 text-xs lg:text-xs">
+                            No data
+                          </span>
+                        </td>
                         <td className="p-3 text-center">
                           <span
                             className={`text-center ${
