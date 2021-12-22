@@ -70,7 +70,11 @@ const List = () => {
                                   </div>
                                 </div>
                               </td>
-                              <td className="p-3">{data.serial}</td>
+                              <td className="p-3">
+                                <span className="bg-neutral-900 z-50 p-2 rounded-lg text-neutral-50">
+                                  {data.serial}
+                                </span>
+                              </td>
                               <td className="p-3 font-bold">{data.model}</td>
                               <td className="p-3 text-center">
                                 <span
