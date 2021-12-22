@@ -64,7 +64,7 @@ i {
 }
 
 .table tr {
-  border-radius: 20px;
+  @apply rounded-3xl;
 }
 
 tr td:nth-child(n + 5),

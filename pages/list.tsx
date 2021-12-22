@@ -142,26 +142,24 @@ const List = () => {
                   ></path>
                 </svg>
               </button>
-              <div className="col-span-12">
+              <div className="col-span-8 max-w-screen-xl">
                 <div className="">
-                  <table className="table text-neutral-400 border-separate space-y-6 text-sm max-w-xl">
+                  <table className="table text-neutral-400 border-separate text-sm max-w-md">
                     <thead className="bg-neutral-800 text-neutral-500">
                       <tr>
-                        <th className="p-3">Computer</th>
-                        <th className="p-3 text-left">Serial Number</th>
-                        <th className="p-3 text-left">User Session</th>
-                        <th className="p-3 text-left">Assigned</th>
-                        <th className="p-3 text-left">Model</th>
-                        <th className="p-3 text-left">Checked</th>
-                        <th className="p-3 text-left"></th>
+                        <th className="p-3 w-full">Computer</th>
+                        <th className="p-3 w-full text-left">Serial Number</th>
+                        <th className="p-3 w-full text-left">User Session</th>
+                        <th className="p-3 w-full text-left">Assigned</th>
+                        <th className="p-3 w-full text-left">Model</th>
                       </tr>
                     </thead>
-                    <tbody className="w-full">
+                    <tbody className="max-w-2xl">
                       <>
                         {data &&
                           data.map((data: Computer) => (
                             <tr className="bg-neutral-800" key={data.index}>
-                              <td className="p-3">
+                              <td className="p-3 w-full">
                                 <div className="flex align-items-center">
                                   <div className="ml-3">
                                     <div className="">{data.computer}</div>
@@ -171,25 +169,25 @@ const List = () => {
                                   </div>
                                 </div>
                               </td>
-                              <td className="p-3">
-                                <span className="bg-transparent lg:bg-neutral-900 z-50 lg:p-2 w-full p-1 rounded-lg text-neutral-50 text-xs lg:text-xs">
+                              <td className="p-3 w-screen">
+                                <span className="bg-transparent lg:bg-neutral-900 z-50 lg:p-2 p-1 text-neutral-50 text-xs lg:text-xs w-screen">
                                   {data.serial}
                                 </span>
                               </td>
-                              <td className="p-3">
-                                <span className="z-50 lg:p-2 w-full p-1 rounded-lg text-neutral-50 text-xs lg:text-xs">
+                              <td className="p-3 w-screen">
+                                <span className="z-50 lg:p-2 p-1 text-neutral-50 text-xs lg:text-xs w-screen">
                                   {data.assigned}
                                 </span>
                               </td>
-                              <td className="p-3">
-                                <span className="z-50 lg:p-2 w-full p-1 rounded-lg text-neutral-50 text-xs lg:text-xs">
+                              <td className="p-3 w-screen">
+                                <span className="z-50 lg:p-2 p-1 text-neutral-50 text-xs lg:text-xs w-screen">
                                   {data.session}
                                 </span>
                               </td>
-                              <td className="p-3 font-bold">{data.model}</td>
-                              <td className="p-3 text-center">
+                              <td className="p-3 w-full font-bold">
+                                {data.model}
                                 <span
-                                  className={`text-center rounded-md px-2 ${
+                                  className={`text-center px-2 ${
                                     data.checked
                                       ? "text-green-500"
                                       : "text-red-500"
@@ -198,7 +196,6 @@ const List = () => {
                                   {data.checked ? "✓" : "✗"}
                                 </span>
                               </td>
-                              <td className="p-3"></td>
                             </tr>
                           ))}
                       </>
