@@ -1,15 +1,12 @@
 export const configuration = {
   appId: "com.computerlist.app",
   nameApp: "Computer List",
-  server: {
-    url: "https://computer-list.vercel.app/",
-  },
   title: "title",
   description: "",
   openGraph: {
-    title: "title",
-    description: "description",
-    url: "url",
+    title: "Computer List",
+    description: "Simple tool to manage your computer list",
+    url: "https://computer.list", // soon link to the app
     image: "image",
     width: 600,
     height: 600,
