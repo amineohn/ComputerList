@@ -39,24 +39,23 @@ const List = () => {
 
   const download = () => {
     try {
-      const csvData = [
-        ...data.map((item: Computer) => [
-          item.serial
-            .replace(`(?:,|\n|^)("(?:(?:"")*[^"]*)*"|[^",\n]*|(?:\n|$))`, "")
-            .toUpperCase(),
-          item.computer
-            .replace(`(?:,|\n|^)("(?:(?:"")*[^"]*)*"|[^",\n]*|(?:\n|$))`, "")
-            .toUpperCase(),
-          item.model
-            .replace(`(?:,|\n|^)("(?:(?:"")*[^"]*)*"|[^",\n]*|(?:\n|$))`, "")
-            .toUpperCase(),
-          item.date
-            .replace(`(?:,|\n|^)("(?:(?:"")*[^"]*)*"|[^",\n]*|(?:\n|$))`, "")
-            .toUpperCase(),
-        ]),
-      ]
-        .join("\n")
-        .replace(/\n$/, "");
+      const csvData = data.map((item: Computer) => {
+        return (
+          `${item.computer.replace(
+            `(?:,|\n|^)("(?:(?:"")*[^"]*)*"|[^",\n]*|(?:\n|$))`,
+            ""
+          )}\n${item.model.replace(
+            `(?:,|\n|^)("(?:(?:"")*[^"]*)*"|[^",\n]*|(?:\n|$))`,
+            ""
+          )}\n${item.serial.replace(
+            `(?:,|\n|^)("(?:(?:"")*[^"]*)*"|[^",\n]*|(?:\n|$))`,
+            ""
+          )}\n${item.date.replace(
+            `(?:,|\n|^)("(?:(?:"")*[^"]*)*"|[^",\n]*|(?:\n|$))`,
+            ""
+          )}` + "\n\n"
+        );
+      });
       const csv = new Blob([csvData], {
         type: "text/csv",
       });
