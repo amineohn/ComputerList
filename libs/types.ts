@@ -13,3 +13,6 @@ export type Post = {
   model: string;
   serial: string;
 };
+export type Selected = {
+  selected: HTMLSelectElement;
+};

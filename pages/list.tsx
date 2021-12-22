@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Firebase } from "../libs/firebase";
-import { Post } from "../libs/types";
+import { Post, Selected } from "../libs/types";
 import ReactPaginate from "react-paginate";
 
 const List = () => {
@@ -8,6 +8,7 @@ const List = () => {
   const [data, setData] = useState([{}] as any);
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
+
   fire
     .collection("computer")
     .orderBy("checked", "desc")
@@ -25,9 +26,11 @@ const List = () => {
       // we set the page count to the total number of items divided by 8
       setPageCount(Math.ceil(data.length / 8));
     });
-  const handlePageClick = (event) => {
-    const newOffset = (event.selected * 8) % data.length;
-    setItemOffset(newOffset);
+  const handlePageClick = (event: Selected) => {
+    const selectedPage = event.selected as any;
+    // const newOffset = (event.selected * 8) % data.length;
+    const offset = selectedPage * 10;
+    setItemOffset(offset);
   };
 
   return (
@@ -124,7 +127,7 @@ const List = () => {
                               />
                             </svg>
                           }
-                          onPageChange={handlePageClick}
+                          onPageChange={handlePageClick as any}
                           pageRangeDisplayed={10}
                           pageCount={pageCount}
                           previousLabel={
