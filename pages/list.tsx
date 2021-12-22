@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Firebase } from "../libs/firebase";
 import { Post, Selected } from "../libs/types";
 import ReactPaginate from "react-paginate";
