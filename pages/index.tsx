@@ -248,8 +248,12 @@ const Login: NextPage = () => {
                     "Sign in"
                   )}
                 </button>
-                <button className="mt-3 py-2 px-4 flex justify-center items-center text-sm font-semibold bg-pink-50 text-pink-700 hover:bg-pink-100 transition ease-in duration-200 text-center focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg">
-                  <a onClick={() => router.push("/signup")}>Sign up</a>
+                <button
+                  type="button"
+                  onClick={() => router.push("/signup")}
+                  className="mt-3 py-2 px-4 flex justify-center items-center text-sm font-semibold bg-pink-50 text-pink-700 hover:bg-pink-100 transition ease-in duration-200 text-center focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"
+                >
+                  Sign up
                 </button>
               </div>
             </form>
