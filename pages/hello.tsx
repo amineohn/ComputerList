@@ -12,6 +12,7 @@ const Hello = () => {
   const [serial, setSerial] = useState("");
   const [session, setSession] = useState("");
   const [assigned, setAssigned] = useState("");
+  const [date, setDate] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const fire = new Firebase();
@@ -26,6 +27,7 @@ const Hello = () => {
         serial.length === 0 ||
         session.length === 0 ||
         assigned.length === 0 ||
+        date.length === 0 ||
         checked === false
       ) {
         setError("Please fill all fields");
@@ -37,7 +39,7 @@ const Hello = () => {
           serial,
           session,
           assigned,
-          date: new Date().toLocaleString(),
+          date: date.toString(),
         });
         setSuccess("yeaah");
         setComputer("");
@@ -179,6 +181,30 @@ const Hello = () => {
                 value={session}
                 onChange={(e) => setSession(e.target.value)}
               />
+              <div className="relative">
+                <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+                  <svg
+                    className="w-5 h-5 text-pink-50"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </div>
+                <input
+                  className="transition flex-1 appearance-none border border-neutral-800 pl-10 w-full py-2 px-4 bg-neutral-800 text-neutral-50 placeholder-neutral-50 rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-pink-600 focus:border-transparent"
+                  type="text"
+                  placeholder="Date of Purchase"
+                  value={date}
+                  onChange={(e) => setDate(e.target.value)}
+                />
+              </div>
+
               <input
                 className="transition flex-1 appearance-none border border-neutral-800 w-full py-2 px-4 bg-neutral-800 text-neutral-50 placeholder-neutral-50 rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-pink-600 focus:border-transparent"
                 type="text"
@@ -210,6 +236,7 @@ const Hello = () => {
           model !== "" ||
           computer !== "" ||
           session !== "" ||
+          date !== "" ||
           assigned !== "" ? (
             <div className="relative pt-1 animate-heartbeat">
               <span className="text-neutral-50">
@@ -217,12 +244,14 @@ const Hello = () => {
                   serial.length +
                   model.length +
                   session.length +
+                  date.length +
                   assigned.length <
                   100 &&
                   computer.length +
                     serial.length +
                     model.length +
                     session.length +
+                    date.length +
                     assigned.length +
                     "%"}
               </span>
@@ -231,6 +260,7 @@ const Hello = () => {
                   serial.length +
                   model.length +
                   session.length +
+                  date.length +
                   assigned.length <
                   100 && (
                   <div
@@ -240,6 +270,7 @@ const Hello = () => {
                           serial.length +
                           model.length +
                           session.length +
+                          date.length +
                           assigned.length) /
                           1 +
                         "%",
